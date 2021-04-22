@@ -10,7 +10,7 @@ let places = [];
 const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("This is mynearbyplaces API!");
 });
 
 app.post("/add/place", (req, res) => {
