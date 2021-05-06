@@ -35,7 +35,7 @@ app.post("/place/:id/review", async(req, res) => {
         // places[index].reviews.push(data);
         // res.send(data);
     let queryString = "UPDATE public.places SET rating =$1 WHERE id= $2;";
-    let result = await db.query(queryString, [JSON.parse(data), req.params.id]);
+    let result = await db.query(queryString, [data, req.params.id]);
     res.send(result);
 });
 app.get("/place/:id/review", async(req, res) => {
@@ -46,7 +46,7 @@ app.get("/place/:id/review", async(req, res) => {
     // })
     let queryString = "SELECT rating FROM public.places WHERE id = $1;";
     let result = await db.query(queryString, [req.params.id]);
-    res.send(result.rows)
+    res.send(result.rows[0].rating)
 });
 
 app.get("/places/:location/:place", async(req, res) => {
